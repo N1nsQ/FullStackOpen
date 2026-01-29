@@ -13,3 +13,9 @@ Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) 
 ## Osa 1
 
 ### Reactin alkeet
+
+* React-projektin luominen Viten avulla
+* React-komponentit ovat funktioita
+* Tiedon välitys komponenttien välillä propsien avulla
+*  **Objects are not valid as a React child** --> Virheilmoitus kertoo, että Reactissa ei voida renderöidä objekteja.
+    * Yksittäisten aaltosulkeissa renderöitävien asioiden tulee Reactissa olla primitiivisiä arvoja, kuten lukuja tai merkkijonoja. 
