@@ -36,3 +36,13 @@ Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) 
 * Luokkasyntaksi
 
 ### Komponentin tila ja tapahtumankäsittely
+
+* Destruktointi = esimerkiksi propsien arvojen kerääminen suoraan oliosta omiin muuttujiin, ilman että niitä tarvitsee hakea erikseen (tai purkaa props -objektia)
+* ```js
+  const Hello = (props) => {
+  const { name, age } = props
+  ```
+  ```js
+  const Hello = ({ name, age }) => {
+  ```
+* Komponentin tila ja `useState` -hook
