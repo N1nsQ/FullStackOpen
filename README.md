@@ -1,4 +1,6 @@
 # FullStackOpen
+Node.js | JavaScript | React | 
+
 Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) tehtävät löytyvät tästä reposta.
 
 ## Osa 0
@@ -19,3 +21,16 @@ Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) 
 * Tiedon välitys komponenttien välillä propsien avulla
 *  **Objects are not valid as a React child** --> Virheilmoitus kertoo, että Reactissa ei voida renderöidä objekteja.
     * Yksittäisten aaltosulkeissa renderöitävien asioiden tulee Reactissa olla primitiivisiä arvoja, kuten lukuja tai merkkijonoja. 
+
+### JavaScriptia
+
+* JavaScript transipoilointi tehdään yleensä Babelin avulla.
+  * Transpilointi tarkoittaa sitä, että uudempi JavaScript käännetään johonkin vanhempaan, selaimen tukemaan versioon
+* `Node.js` on JavaScript-moottoriin perustuva suoritusympäristö
+* JavaScript muuttujat
+* JavaScript taulukot
+  * `concat` -metodi luo uuden taulukon vanhan pohjalta, lisäten sinne uuden halutun arvon, esim. `const t2 = t.concat(5)`
+  * `map` -metodi muodostaa taulukon perusteella uuden taulukon, jonka jokainen alkio luodaan map:in parametrina olevan funktion avulla
+* JavaScript oliot
+* JavaScript funktiot
+* Luokkasyntaksi
