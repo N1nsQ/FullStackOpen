@@ -34,3 +34,5 @@ Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) 
 * JavaScript oliot
 * JavaScript funktiot
 * Luokkasyntaksi
+
+### Komponentin tila ja tapahtumankäsittely
