@@ -46,3 +46,40 @@ Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) 
   const Hello = ({ name, age }) => {
   ```
 * Komponentin tila ja `useState` -hook
+  * ```js
+      const [ counter, setCounter ] = useState(0) // destruktointisyntaksi
+    ````
+* **Too many re-renders. React limits the number of renders to prevent an infinite loop.** --> Tapahtumankäsittelijäksi täytyy määritellä joko *funktio* tai *viite funktioon*
+* ```js
+  <button onClick={() => setCounter(counter + 1)}>   // Tämä on ok, tapahtumankäsittelijä on funktio
+  plus
+  </button>
+  ```
+* ```js
+  const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+
+  const increaseByOne = () => setCounter(counter + 1)  // funktio asetetaan muuttujaan
+  
+  const setToZero = () => setCounter(0)   // funktio asetetaan muuttujaan
+
+  return (
+    <div>
+      <div>{counter}</div>
+
+      <button onClick={increaseByOne}>  // Tapahtumankäsittelijäksi asetetaan viite funktioon, tämä on ok
+        plus
+      </button>
+
+        <button onClick={setToZero}>   // Tapahtumankäsittelijäksi asetetaan viite funktioon, tämä on ok
+          zero
+        </button>
+      </div>
+    )
+  }
+  ```
+* ```js
+  <button onClick={setCounter(counter + 1)}>  // tämä on FUNKTIOKUTSU ja se aiheuttaa ikuisen loopin
+  ```
+
