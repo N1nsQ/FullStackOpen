@@ -83,3 +83,62 @@ Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) 
   <button onClick={setCounter(counter + 1)}>  // tämä on FUNKTIOKUTSU ja se aiheuttaa ikuisen loopin
   ```
 
+### Monimutkaisempi tila, Reactin debuggaus
+
+* Komponentin tila voidaan jakaa pienempiin osiin useammalla `useState` -hookilla.
+* **Object spread -syntaksi:** ```{ ...clicks }```
+  * Tila voidaan pitää myös yhtenäisenä tallentamalla muuttuvat osat yhteen olioon:
+  * ```js
+    {
+      left: 0,
+      right: 0
+    }
+    ```
+ * Tilan päivittäminen object spread -syntaksilla:
+    * ```js
+      const handleLeftClick = () =>
+        setClicks({ ...clicks, left: clicks.left + 1 })
+      ```
+     * ```{ ...clicks }``` pitää muut objektin arvot muuttumattomina
+* Älä muuta React-komponentin tilaa suoraan!
+  * ```js
+    const handleLeftClick = () => {
+        clicks.left++  // EI SALLITTU!
+        setClicks(clicks)
+      }
+    ```
+* Tilan päivitys tapahtuu **asynkronisesti.**
+* **React-sovelluksen debuggaus:**
+  * Developer-konsoli
+    * muista kirjoittaa riittävästi `console.log()`:eja sopiviin kohtiin!
+  * Chromen developer-konsolin `debugger`in hyödyntäminen, [mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger)
+  * React Developer Tools
+  * [Debug JavaScript](https://developer.chrome.com/docs/devtools/javascript)
+* Älä kutsu `useState` tai `useEffect` -funktioita silmukassa, ehtolauseen sisällä tai muista kuin komponentin määrittelevästä funktiosta. **Kutsu vain React-komponentin määrittelevän funktion rungosta.**
+* Älä määrittele komponenttia komponentin sisään
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
