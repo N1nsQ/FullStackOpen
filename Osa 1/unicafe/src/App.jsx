@@ -5,9 +5,11 @@ const Header = ({ text }) => <h1>{text}</h1>;
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 
 const StatisticLine = ({ text, value, optional }) => (
-  <p>
-    {text} {value} {optional}
-  </p>
+  <tr>
+    <td>{text}</td>
+    <td>{value}</td>
+    <td>{optional}</td>
+  </tr>
 );
 
 const App = () => {
@@ -25,9 +27,9 @@ const App = () => {
   const good = "Hyvä";
   const neutral = "Neutraali";
   const negative = "Negatiivinen";
-  const total = "Ääniä yhteensä";
-  const average = "Keskiarvo";
-  const positiveVotes = "Positiivisen palautteen osuus";
+  const total = "Ääniä yhteensä:";
+  const average = "Keskiarvo:";
+  const positiveVotes = "Positiivinen palaute:";
   const noFeedback = "Palautetta ei ole annettu.";
 
   const handleGoodFeedback = () => {
@@ -78,18 +80,20 @@ const App = () => {
       {totalFeedback === 0 ? (
         <p>{noFeedback}</p>
       ) : (
-        <>
-          <StatisticLine text={good} value={goodFeedback} />
-          <StatisticLine text={neutral} value={neutralFeedback} />
-          <StatisticLine text={negative} value={negativeFeedback} />
-          <StatisticLine text={total} value={totalFeedback} />
-          <StatisticLine text={average} value={feedbackAverage} />
-          <StatisticLine
-            text={positiveVotes}
-            value={positivePercent}
-            optional="%"
-          />
-        </>
+        <table>
+          <tbody>
+            <StatisticLine text={good} value={goodFeedback} />
+            <StatisticLine text={neutral} value={neutralFeedback} />
+            <StatisticLine text={negative} value={negativeFeedback} />
+            <StatisticLine text={total} value={totalFeedback} />
+            <StatisticLine text={average} value={feedbackAverage} />
+            <StatisticLine
+              text={positiveVotes}
+              value={positivePercent}
+              optional="%"
+            />
+          </tbody>
+        </table>
       )}
     </>
   );
