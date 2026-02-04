@@ -139,7 +139,8 @@ Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) 
          return sum + order.amount
        }, 0)
        ```
-
+* **Each child in array or iterator should have a unique "key" prop.** --> `map`-funktiolle pitää määritellä uniikki avain, key.
+  * Älä kuitenkaan käytä indeksiä avaimena
 
 
 
