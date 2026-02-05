@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SearcrhBox from "./components/SearchBox";
 import AddNew from "./components/AddNew";
 import Persons from "./Persons";
-import axios from "axios";
+import personServices from "./services/persons";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -11,9 +11,9 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/persons")
-      .then((response) => setPersons(response.data));
+    personServices.getAll().then((initialContent) => {
+      setPersons(initialContent);
+    });
   }, []);
 
   const handleNameChange = (event) => {
@@ -39,9 +39,11 @@ const App = () => {
       return;
     }
 
-    setPersons(persons.concat(addPerson));
-    setNewName("");
-    setNewNumber("");
+    personServices.create(addPerson).then((returnedPerson) => {
+      setPersons(persons.concat(returnedPerson));
+      setNewName("");
+      setNewNumber("");
+    });
   };
 
   return (
