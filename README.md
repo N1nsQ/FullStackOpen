@@ -117,9 +117,30 @@ Helsingin yliopiston MOOC-kurssin [Full Stack Open](https://fullstackopen.com/) 
 * Älä kutsu `useState` tai `useEffect` -funktioita silmukassa, ehtolauseen sisällä tai muista kuin komponentin määrittelevästä funktiosta. **Kutsu vain React-komponentin määrittelevän funktion rungosta.**
 * Älä määrittele komponenttia komponentin sisään
 
+## Osa 2
 
+### Kokoelmien renderöinti ja moduulit
 
-
+* Taulukoiden käsittely funktionaalisesti metodien  `filter`, `reject`, `map`, `find`, ja `reduce` avulla.
+  * `filter`: luo uuden taulukon, joka pitää sisällään vain ehdon täyttävät alkiot
+     * esim.  ```const dogs = animals.filter(({ species }) => species === 'dog')``` // ota vain nämä
+     * `reject`: Voidaan käyttää filterin tapaan **käänteisesti**: se **poistaa** alkiot jotka täyttävät ehdon
+     * esim. `const notDogs = animals.filter(({ species }) => species !== 'dog'` // älä ota näitä
+  * `map`: luo uuden, samanmittaisen taulukon, joka muuttaa kaikkia alkioita annetun funktion mukaisesti
+    * esim. `const names = animals.map((animal) => animal.name)` Palauttaa vain eläimen nimen, ei muuta taulukon tietoa
+  * `find`: palauttaa **ensimmäisen** alkion joka täyttää ehdon, muuttaen taulukon yhdeksi alkioksi
+    * `filter` palauttaa siis kaikki ehdon täyttävät alkiot, kun `find` palauttaa vain ensimmäisen!
+    * `const ekaKoira = animals.find(({ species }) => species === 'dog');`
+  * `reduce`: monikäyttöinen metodi joka palauttaa aina **yhden arvon**
+    * Voidaan käyttää esim. taulukossa olevien summien yhteenlaskemiseen
+    *  esim.
+      ```js
+       const totalAmount = orders.reduce((sum, order) => {
+         return sum + order.amount
+       }, 0)
+       ```
+* **Each child in array or iterator should have a unique "key" prop.** --> `map`-funktiolle pitää määritellä uniikki avain, key.
+  * Älä kuitenkaan käytä indeksiä avaimena
 
 
 
