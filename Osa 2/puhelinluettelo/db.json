@@ -19,6 +19,26 @@
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "id": "4"
+    },
+    {
+      "id": "401a",
+      "name": "Nina Tulilahti",
+      "number": "0445443221"
+    },
+    {
+      "id": "77e3",
+      "name": "Kissi Mirrikkä",
+      "number": "8937456"
+    },
+    {
+      "id": "9a4f",
+      "name": "Aku Ankka",
+      "number": "1111111111111"
+    },
+    {
+      "id": "8c25",
+      "name": "Soppa Kauha",
+      "number": "123123123"
     }
   ]
 }

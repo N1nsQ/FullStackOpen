@@ -35,7 +35,25 @@ const App = () => {
     const isDuplicate = persons.some((person) => person.name === newName);
 
     if (isDuplicate) {
-      alert(`${newName} is already added to phonebook`);
+      const findPerson = persons.find((person) => person.name === newName);
+      const updatedPerson = { ...findPerson, number: newNumber };
+      if (
+        window.confirm(
+          `${newName} is already added to phonebook. Do you want to replace the old number with a new one?`,
+        )
+      ) {
+        personServices
+          .update(findPerson.id, updatedPerson)
+          .then((returnedPerson) => {
+            setPersons(
+              persons.map((person) =>
+                person.id === findPerson.id ? returnedPerson : person,
+              ),
+            );
+          });
+      }
+      setNewName("");
+      setNewNumber("");
       return;
     }
 
@@ -44,6 +62,15 @@ const App = () => {
       setNewName("");
       setNewNumber("");
     });
+  };
+
+  const deletePerson = (id) => {
+    const findPerson = persons.find((person) => person.id === id);
+    if (window.confirm(`Delete ${findPerson.name}?`)) {
+      personServices.remove(id).then(() => {
+        setPersons(persons.filter((person) => person.id !== id));
+      });
+    }
   };
 
   return (
@@ -61,7 +88,11 @@ const App = () => {
         numberChange={handleNumberChange}
       />
       <h2>Numbers</h2>
-      <Persons persons={persons} searchValue={searchValue} />
+      <Persons
+        persons={persons}
+        searchValue={searchValue}
+        handleDelete={deletePerson}
+      />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-const Persons = ({ persons, searchValue }) => {
+const Persons = ({ persons, searchValue, handleDelete }) => {
   const personsToShow = searchValue
     ? persons.filter((person) =>
         person.name.toLowerCase().includes(searchValue.toLowerCase()),
@@ -10,7 +10,8 @@ const Persons = ({ persons, searchValue }) => {
       <ul>
         {personsToShow.map((person) => (
           <li key={person.name}>
-            {person.name} {person.number}
+            {person.name} {person.number}{" "}
+            <button onClick={() => handleDelete(person.id)}>delete</button>
           </li>
         ))}
       </ul>
