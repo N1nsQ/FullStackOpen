@@ -3,12 +3,16 @@ import SearcrhBox from "./components/SearchBox";
 import AddNew from "./components/AddNew";
 import Persons from "./Persons";
 import personServices from "./services/persons";
+import Notification from "./components/Notification";
+import "./index.css";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   useEffect(() => {
     personServices.getAll().then((initialContent) => {
@@ -42,6 +46,7 @@ const App = () => {
           `${newName} is already added to phonebook. Do you want to replace the old number with a new one?`,
         )
       ) {
+        console.log("confirm hyväksytty, kutsutaan updatea");
         personServices
           .update(findPerson.id, updatedPerson)
           .then((returnedPerson) => {
@@ -50,8 +55,21 @@ const App = () => {
                 person.id === findPerson.id ? returnedPerson : person,
               ),
             );
+            const updatedMessage = `Phone number for ${newName} updated successfully.`;
+            setMessage(updatedMessage);
+            setMessageType("message");
+            setTimeout(() => {
+              setMessage(null);
+            }, 5000);
+          })
+          .catch((error) => {
+            setMessage(`${findPerson.name} has already been removed.`);
+            console.log("Error:", error);
+            setMessageType("error");
+            setTimeout(() => setMessage(null), 5000);
           });
       }
+
       setNewName("");
       setNewNumber("");
       return;
@@ -59,6 +77,12 @@ const App = () => {
 
     personServices.create(addPerson).then((returnedPerson) => {
       setPersons(persons.concat(returnedPerson));
+      const updatedMessage = `${returnedPerson.name} added succesfully to phone book.`;
+      setMessage(updatedMessage);
+      setMessageType("message");
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
       setNewName("");
       setNewNumber("");
     });
@@ -67,15 +91,30 @@ const App = () => {
   const deletePerson = (id) => {
     const findPerson = persons.find((person) => person.id === id);
     if (window.confirm(`Delete ${findPerson.name}?`)) {
-      personServices.remove(id).then(() => {
-        setPersons(persons.filter((person) => person.id !== id));
-      });
+      personServices
+        .remove(id)
+        .then(() => {
+          setPersons(persons.filter((person) => person.id !== id));
+          const updatedMessage = `${findPerson.name} deleted successfully from phone book.`;
+          setMessage(updatedMessage);
+          setMessageType("message");
+          setTimeout(() => setMessage(null), 5000);
+        })
+        .catch((error) => {
+          setMessage(`${findPerson.name} has already been removed.`);
+          console.log("Error:", error);
+          setMessageType("error");
+          setTimeout(() => setMessage(null), 5000);
+        });
     }
   };
 
   return (
     <div>
       <h2>Phonebook</h2>
+      <div>
+        {message && <Notification type={messageType} message={message} />}
+      </div>
       <div>
         <SearcrhBox value={searchValue} onChange={handleSearchChange} />
       </div>

@@ -1,16 +1,6 @@
 {
   "persons": [
     {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": "1"
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": "2"
-    },
-    {
       "name": "Dan Abramov",
       "number": "12-43-234345",
       "id": "3"
@@ -21,24 +11,24 @@
       "id": "4"
     },
     {
-      "id": "401a",
-      "name": "Nina Tulilahti",
-      "number": "0445443221"
-    },
-    {
       "id": "77e3",
       "name": "Kissi Mirrikkä",
       "number": "8937456"
     },
     {
-      "id": "9a4f",
-      "name": "Aku Ankka",
-      "number": "1111111111111"
-    },
-    {
       "id": "8c25",
       "name": "Soppa Kauha",
       "number": "123123123"
+    },
+    {
+      "id": "d61e",
+      "name": "Silli Salaatti",
+      "number": "78465"
+    },
+    {
+      "id": "cf05",
+      "name": "Maija Mehiläinen",
+      "number": "98347539456"
     }
   ]
 }
